@@ -17,8 +17,7 @@ let alice = { name: "Alice", age: 25 };
 
 let calculator = {
   add: function (a, b) {
-    this.answer = a + b;
-    return this.answer;
+    return a + b;
   },
   subtract: function (a, b) {
     return a - b;
