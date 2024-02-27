@@ -34,3 +34,6 @@ if (num == 5) {
 // } else {
 //   console.log("Die Zahl ist negativ.");
 // }
+
+console.log(false == 0);
+console.log(true === false);
