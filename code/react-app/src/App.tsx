@@ -22,18 +22,8 @@ function Header() {
   );
 }
 
-function User(props) {
-  // logic
-
-  return (
-    <div style={{ background: "green", margin: 5, padding: 5 }}>
-      {JSON.stringify(props)}
-    </div>
-  );
-}
-
 function App() {
-  const [isDark, setDark] = useState(false);
+  const [isDark, setDark] = useState(true);
 
   // let isDarkVar = true;
 
@@ -43,18 +33,10 @@ function App() {
   };
 
   return (
-    <div className={isDark ? "dark" : "light"}>
+    <div className={`App ${isDark ? "dark" : "light"}`}>
       <Header />
 
       <button onClick={switchTheme}>Switch theme</button>
-
-      <User text="Abc" avatar="http...." />
-      <User text="Def" />
-      <User text="1234" />
-      <User text="1234" />
-      <User text="1234" />
-      <User text="1234" />
-      <User text="1234" />
     </div>
   );
 }
