@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -26,17 +27,28 @@ function User(props) {
 
   return (
     <div style={{ background: "green", margin: 5, padding: 5 }}>
-      {props.text}
+      {JSON.stringify(props)}
     </div>
   );
 }
 
 function App() {
+  const [isDark, setDark] = useState(false);
+
+  // let isDarkVar = true;
+
+  const switchTheme = () => {
+    // isDark = !isDark;
+    setDark(!isDark);
+  };
+
   return (
-    <div className="App">
+    <div className={isDark ? "dark" : "light"}>
       <Header />
 
-      <User text="Abc" />
+      <button onClick={switchTheme}>Switch theme</button>
+
+      <User text="Abc" avatar="http...." />
       <User text="Def" />
       <User text="1234" />
       <User text="1234" />
