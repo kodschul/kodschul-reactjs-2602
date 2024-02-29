@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const TodoApp = () => {
   const [todoText, setTodoText] = useState("");
-
   const [todos, setTodos] = useState<string[]>(["Code", "Read"]);
   // logic
 
