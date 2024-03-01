@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import CounterAppHook from "./hooks/CounterAppHook";
 import reportWebVitals from "./reportWebVitals";
-import PostApp from "./api/PostApp";
+import FetchApp from "./api/FetchApp";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <PostApp />
+    <FetchApp />
   </React.StrictMode>
 );
 

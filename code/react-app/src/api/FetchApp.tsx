@@ -10,9 +10,10 @@ type ICharacter = {
 
 const FetchApp = () => {
   const [characters, setCharacters] = useState([]);
+  const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
+  const fetchCharacters = () => {
+    fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
       .then((response) => response.json())
       .then((response) => {
         setCharacters(response.results);
@@ -20,7 +21,11 @@ const FetchApp = () => {
       .catch(() => {
         console.log("Error");
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchCharacters();
+  }, [page]);
 
   return (
     <div style={styles.main}>
@@ -34,6 +39,12 @@ const FetchApp = () => {
         ) : (
           <p>Loading...</p>
         )}
+      </div>
+
+      <div style={{ display: "flex" }}>
+        <button onClick={() => setPage(page - 1)}>Previous</button>
+        <span style={{ margin: 5 }}> {page}</span>
+        <button onClick={() => setPage(page + 1)}>Next</button>
       </div>
     </div>
   );
