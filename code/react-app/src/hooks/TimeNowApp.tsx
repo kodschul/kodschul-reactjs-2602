@@ -1,3 +1,4 @@
+import { cp } from "fs";
 import { useEffect, useRef, useState } from "react";
 
 const TimeNowApp = () => {
@@ -5,19 +6,31 @@ const TimeNowApp = () => {
 
   const intervalRef = useRef<any>(null);
 
-  useEffect(() => {
+  const startTimer = () => {
     intervalRef.current = setInterval(() => {
       setNow(new Date());
     }, 1000);
+  };
 
+  useEffect(() => {
+    startTimer();
     return () => {
       clearInterval(intervalRef.current);
     };
   }, []);
 
+  const toggleTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    } else {
+      startTimer();
+    }
+  };
+
   return (
     <div style={styles.main}>
-      <h1 onClick={() => clearInterval(intervalRef.current)}>
+      <h1 onClick={toggleTimer}>
         {now.getHours()}:{now.getMinutes()}:{now.getSeconds()}
       </h1>
     </div>
