@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import ThemeApp from "./theme-app/ThemeApp";
+import CounterAppHook from "./hooks/CounterAppHook";
 import reportWebVitals from "./reportWebVitals";
+import FetchApp from "./api/FetchApp";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeApp />
+    <FetchApp />
   </React.StrictMode>
 );
 
