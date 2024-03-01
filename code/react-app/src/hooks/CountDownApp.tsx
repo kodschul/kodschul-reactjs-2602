@@ -1,26 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CountDownApp = () => {
   const [now, setNow] = useState(new Date());
 
-  const [timeoutInSecs, setTimeoutInSeconds] = useState(0);
   const [isTimeout, setIsTimeout] = useState(false);
 
+  const inputRef = useRef<any>(null);
+
   const startTimeout = () => {
+    let timeoutInSecs = parseInt(inputRef.current.value);
+
     setIsTimeout(false);
     setTimeout(() => {
       setIsTimeout(true);
-      setTimeoutInSeconds(0);
+      inputRef.current.value = 0;
     }, timeoutInSecs * 1000);
   };
 
   return (
     <div style={{ ...styles.main, ...(isTimeout && { background: "red" }) }}>
       <input
+        ref={inputRef}
         type="number"
-        value={timeoutInSecs}
+        // value={timeoutInSecs}
         // @ts-ignore
-        onChange={(e) => setTimeoutInSeconds(parseInt(e.target.value))}
+        // onChange={(e) => setTimeoutInSeconds(parseInt(e.target.value))}
         style={styles.input}
       />
 
