@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { createFalse } from "typescript";
 
 type ICharacter = {
   id: string;
@@ -9,24 +8,10 @@ type ICharacter = {
   [key: string]: any;
 };
 
-const FetchApp = () => {
+const CharactersPage = () => {
   const [characters, setCharacters] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
-
-  const fetchCharacters = () => {
-    fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
-      .then((response) => response.json())
-      .then((response) => {
-        setCharacters(response.results);
-        console.log("It's done 1");
-      })
-      .catch(() => {
-        console.log("Error");
-      });
-
-    console.log("It's done 2");
-  };
 
   const fetchCharactersAsync = async () => {
     setLoading(true);
@@ -106,4 +91,4 @@ const styles: any = {
   },
 };
 
-export default FetchApp;
+export default CharactersPage;

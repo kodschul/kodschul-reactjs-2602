@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import CounterAppHook from "./hooks/CounterAppHook";
 import reportWebVitals from "./reportWebVitals";
-import FetchApp from "./api/FetchApp";
+import RickMortyApp from "./rick-morty/App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <FetchApp />
+    <RickMortyApp />
   </React.StrictMode>
 );
 
