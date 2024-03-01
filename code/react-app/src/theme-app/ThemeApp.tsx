@@ -1,24 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import SwitchThemeButton from "./SwitchThemeButton";
 import CardContent from "./CardContent";
+import { ThemeContext } from "./theme";
 
 const ThemeApp = () => {
-  const [isDark, setDark] = useState(true);
+  const theme = useContext(ThemeContext);
+
   return (
     <div
       style={{
         ...styles.main,
-        ...(!isDark && styles.mainLightMode),
+        ...(!theme.isDark && styles.mainLightMode),
       }}
     >
       <h1>Theme App</h1>
-
-      <CardContent isDark={isDark} />
-
-      <p>Theme: {isDark ? "Dark Mode" : "Light Mode"}</p>
-
-      <SwitchThemeButton isDark={isDark} switchMode={setDark} />
+      <CardContent />
+      <p>Theme: {theme.isDark ? "Dark Mode" : "Light Mode"}</p>
+      <SwitchThemeButton />
     </div>
+  );
+};
+
+const App = () => {
+  const [isDark, setDark] = useState(true);
+
+  return (
+    <ThemeContext.Provider value={{ isDark: isDark, setDark: setDark }}>
+      <ThemeApp />
+    </ThemeContext.Provider>
   );
 };
 
@@ -39,4 +48,4 @@ const styles: any = {
   },
 };
 
-export default ThemeApp;
+export default App;

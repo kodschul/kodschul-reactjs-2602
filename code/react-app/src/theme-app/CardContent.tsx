@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardContainer from "./CardContainer";
 
-const CardContent = (props) => {
+const CardContent = () => {
   return (
     <div style={{ maxWidth: "30%" }}>
-      <CardContainer isDark={props.isDark}>
+      <CardContainer>
         <h3>Main content</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus

@@ -1,12 +1,10 @@
-type SwitchThemeButtonProps = {
-  isDark: boolean;
-  switchMode: (isDark: boolean) => void;
-};
+import { useTheme } from "./theme";
 
-const SwitchThemeButton = (props: SwitchThemeButtonProps) => {
+const SwitchThemeButton = () => {
+  const { isDark, setDark } = useTheme();
   return (
-    <button onClick={() => props.switchMode(!props.isDark)}>
-      {props.isDark ? "Switch lights on" : "Switch lights off"}
+    <button onClick={() => setDark(!isDark)}>
+      {isDark ? "Switch lights on" : "Switch lights off"}
     </button>
   );
 };

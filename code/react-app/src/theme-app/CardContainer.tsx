@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useTheme } from "./theme";
 
-const CardContainer = ({ children, isDark = false }) => {
+const CardContainer = ({ children }) => {
+  const theme = useTheme();
   return (
     <div
       style={
-        isDark ? { background: "rgb(0, 0, 0, 0.2)" } : { background: "silver" }
+        theme.isDark
+          ? { background: "rgb(0, 0, 0, 0.2)" }
+          : { background: "silver" }
       }
     >
       {children}
