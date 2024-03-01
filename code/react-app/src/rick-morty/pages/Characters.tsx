@@ -42,7 +42,9 @@ const CharactersPage = () => {
       <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
         {characters.length > 0 &&
           characters.map((character: ICharacter) => (
-            <Character name={character.name} avatar={character.image} />
+            <a href={`/${character.id}`}>
+              <Character name={character.name} avatar={character.image} />
+            </a>
           ))}
       </div>
 
@@ -70,6 +72,8 @@ const Character = (props: CharacterProps) => {
         background: "rgb(38, 76, 173)",
         marginTop: 10,
         justifyContent: "center",
+        color: "white",
+        textDecoration: "none",
       }}
     >
       <img src={props.avatar} width={100} />
